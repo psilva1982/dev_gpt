@@ -19,7 +19,8 @@ def llama_on_docker():
     return llm
 
 def get_llm_model():
-    use_docker = os.environ.get("USE_DOCKER")
+    use_docker = os.environ.get("USE_DOCKER", False)
+    use_docker = True if use_docker == "True" else False
     if use_docker:
         return use_docker, llama_on_docker()
 
